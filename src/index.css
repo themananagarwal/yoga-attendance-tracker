@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #F5F5DC;
+  /* Replaced Black with Beige (Classic) or #E8E6E0? Let's use #F2F0E9 (Premium Stone) */
+  --color-background: #F2F0E9;
+  /* Premium Beige/Stone */
+  --color-surface: #FFFFFF;
+  /* White Cards */
+  --color-primary: #18191C;
+  /* Near Black Text (was White) */
+  --color-secondary: #52525B;
+  /* Zinc-600 */
+  --color-muted: #A1A1AA;
+  /* Zinc-400 */
+  --color-accent: #B45309;
+  /* Amber-700 (Warm Accent) - Fits Beige */
+  --color-success: #15803D;
+  /* Emerald-700 */
+
+  --font-sans: 'Inter', sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-primary antialiased;
+  }
+}
+
+/* Custom premium scrollbar - Light Mode */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-black/10 rounded-full;
+}
