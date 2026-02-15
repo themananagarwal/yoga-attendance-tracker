@@ -61,16 +61,16 @@ export function EditDayModal({ date, onClose }: EditDayModalProps) {
                     <button
                         onClick={() => toggleAttendance(date)}
                         className={cn(
-                            "w-full py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-3 transition-all",
+                            "w-full py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-3 transition-all duration-300 shadow-sm",
                             isAttended
-                                ? "bg-success/10 text-success border border-success/20 hover:bg-success/20"
-                                : "bg-white/5 text-muted hover:bg-white/10 border border-white/5 hover:text-white"
+                                ? "bg-success text-white hover:bg-success/90 ring-4 ring-success/20"
+                                : "bg-white border border-secondary/20 text-primary hover:bg-secondary/5"
                         )}
                     >
                         {isAttended ? (
                             <>
-                                <Check size={24} />
-                                <span>Attended</span>
+                                <Check size={24} strokeWidth={3} />
+                                <span>Session Complete</span>
                             </>
                         ) : (
                             <span>Mark as Attended</span>

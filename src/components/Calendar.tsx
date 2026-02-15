@@ -68,7 +68,7 @@ export function Calendar({ currentDate, onDateChange, onDayClick }: CalendarProp
             {/* Grid */}
             <div className="grid grid-cols-7 gap-1 text-center">
                 {weekDays.map(day => (
-                    <div key={day} className="text-[10px] font-medium text-muted uppercase tracking-wider py-2">
+                    <div key={day} className="text-[10px] font-bold text-muted uppercase tracking-wider py-3">
                         {day}
                     </div>
                 ))}
@@ -84,40 +84,49 @@ export function Calendar({ currentDate, onDateChange, onDayClick }: CalendarProp
                             key={day.toISOString()}
                             onClick={() => onDayClick(day)}
                             className={cn(
-                                "relative group flex flex-col items-center justify-center p-2 rounded-xl h-20 sm:h-24 transition-all border border-transparent",
-                                !isCurrentMonth && "opacity-30",
-                                isToday(day) && "bg-white/5 border-white/10",
-                                "hover:bg-white/5"
+                                "relative group flex flex-col items-center justify-start pt-2 rounded-xl h-20 sm:h-24 transition-all duration-200 border",
+                                // Base Styles
+                                isCurrentMonth ? "opacity-100" : "opacity-30",
+                                // Border Styling (Visible Grid)
+                                "border-secondary/20 hover:border-secondary/50",
+                                // Status Styling
+                                isAttended
+                                    ? "bg-success/10 border-success/30 shadow-sm"
+                                    : "bg-surface hover:bg-white/50",
+                                // Today Styling
+                                isToday(day) && "ring-2 ring-accent ring-offset-2 ring-offset-background z-10"
                             )}
-                            initial={{ opacity: 0, scale: 0.9 }}
+                            initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: isCurrentMonth ? 1 : 0.3, scale: 1 }}
                             transition={{ delay: idx * 0.005 }}
                         >
                             <span className={cn(
-                                "text-sm font-medium mb-1",
-                                isToday(day) ? "text-accent" : "text-primary"
+                                "text-sm font-semibold mb-1 w-6 h-6 flex items-center justify-center rounded-full",
+                                isToday(day) ? "bg-accent text-white" : "text-primary",
+                                isAttended && !isToday(day) && "text-success"
                             )}>
                                 {format(day, 'd')}
                             </span>
 
-                            {/* Attendance Indicator */}
-                            <div className="h-6 flex items-center justify-center">
+                            {/* Attendance Indicator (Big Checkmark) */}
+                            <div className="flex-1 flex items-center justify-center w-full">
                                 {isAttended ? (
                                     <motion.div
-                                        initial={{ scale: 0 }}
-                                        animate={{ scale: 1 }}
-                                        className="w-8 h-8 rounded-full bg-success/20 text-success flex items-center justify-center"
+                                        initial={{ scale: 0, rotate: -45 }}
+                                        animate={{ scale: 1, rotate: 0 }}
+                                        className="w-8 h-8 rounded-full bg-success text-white flex items-center justify-center shadow-sm"
                                     >
-                                        <Check size={14} strokeWidth={3} />
+                                        <Check size={18} strokeWidth={4} />
                                     </motion.div>
                                 ) : (
-                                    <div className="w-1.5 h-1.5 rounded-full bg-white/5 group-hover:bg-white/20 transition-colors" />
+                                    // Empty state placeholder on hover
+                                    <div className="w-2 h-2 rounded-full bg-secondary/10 group-hover:bg-secondary/30 transition-colors" />
                                 )}
                             </div>
 
                             {/* Note Indicator */}
                             {record?.note && (
-                                <div className="absolute top-2 right-2 w-1.5 h-1.5 rounded-full bg-accent" />
+                                <div className="absolute top-2 right-2 w-2 h-2 rounded-full bg-accent ring-2 ring-surface" />
                             )}
                         </motion.button>
                     );
