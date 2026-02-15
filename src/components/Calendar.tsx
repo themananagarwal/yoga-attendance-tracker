@@ -1,4 +1,4 @@
-import { useState } from 'react';
+
 import {
     format,
     startOfMonth,
@@ -7,13 +7,13 @@ import {
     endOfWeek,
     eachDayOfInterval,
     isSameMonth,
-    isSameDay,
+
     isToday
 } from 'date-fns';
 import { ChevronLeft, ChevronRight, Check } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { useAttendanceStore } from '../lib/store';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 interface CalendarProps {
     currentDate: Date;

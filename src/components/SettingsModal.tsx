@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { X, Save, Upload, Download } from 'lucide-react';
+import { X, Save, Download } from 'lucide-react';
 import { useAttendanceStore } from '../lib/store';
 import { motion, AnimatePresence } from 'framer-motion';
 
