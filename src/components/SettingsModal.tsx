@@ -48,12 +48,12 @@ export function SettingsModal({ onClose }: SettingsModalProps) {
                     initial={{ scale: 0.95, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     exit={{ scale: 0.95, opacity: 0 }}
-                    className="w-full max-w-md bg-surface rounded-2xl border border-white/10 p-6 shadow-2xl space-y-6"
+                    className="w-full max-w-md bg-surface rounded-2xl border border-secondary/10 p-6 shadow-2xl space-y-6"
                     onClick={e => e.stopPropagation()}
                 >
-                    <div className="flex justify-between items-center border-b border-white/5 pb-4">
-                        <h2 className="text-xl font-bold text-white tracking-tight">Settings</h2>
-                        <button onClick={onClose} className="p-2 hover:bg-white/5 rounded-full transition-colors text-muted hover:text-white">
+                    <div className="flex justify-between items-center border-b border-secondary/10 pb-4">
+                        <h2 className="text-xl font-bold text-primary tracking-tight">Settings</h2>
+                        <button onClick={onClose} className="p-2 hover:bg-black/5 rounded-full transition-colors text-muted hover:text-primary">
                             <X size={20} />
                         </button>
                     </div>
@@ -65,15 +65,15 @@ export function SettingsModal({ onClose }: SettingsModalProps) {
                             type="number"
                             value={rate}
                             onChange={e => setRate(e.target.value)}
-                            className="w-full bg-background rounded-lg border border-white/10 p-3 text-lg font-mono text-white placeholder:text-muted/50 focus:outline-none focus:border-accent"
+                            className="w-full bg-background rounded-lg border border-secondary/20 p-3 text-lg font-mono text-primary placeholder:text-muted/50 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent"
                         />
                     </div>
 
                     {/* Data Management */}
-                    <div className="space-y-4 pt-4 border-t border-white/5">
-                        <h3 className="text-sm font-medium text-white">Data Management</h3>
+                    <div className="space-y-4 pt-4 border-t border-secondary/10">
+                        <h3 className="text-sm font-medium text-primary">Data Management</h3>
 
-                        <button onClick={handleExport} className="w-full flex items-center justify-center gap-2 py-3 bg-white/5 border border-white/5 rounded-lg text-sm font-medium hover:bg-white/10 transition-colors">
+                        <button onClick={handleExport} className="w-full flex items-center justify-center gap-2 py-3 bg-secondary/5 border border-secondary/10 rounded-lg text-sm font-medium hover:bg-secondary/10 transition-colors text-primary">
                             <Download size={16} />
                             Export Data (Copy Backup)
                         </button>
@@ -85,11 +85,11 @@ export function SettingsModal({ onClose }: SettingsModalProps) {
                                     placeholder="Paste JSON backup here..."
                                     value={jsonInput}
                                     onChange={e => setJsonInput(e.target.value)}
-                                    className="flex-1 bg-background rounded-lg border border-white/10 p-2 text-xs text-muted focus:outline-none focus:border-white/20"
+                                    className="flex-1 bg-background rounded-lg border border-secondary/20 p-2 text-xs text-primary placeholder:text-muted/50 focus:outline-none focus:border-accent"
                                 />
                                 <button
                                     onClick={handleImport}
-                                    className={`px-3 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-colors ${importStatus === 'success' ? 'bg-success text-white' : importStatus === 'error' ? 'bg-red-500 text-white' : 'bg-white text-black'}`}
+                                    className={`px-3 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-colors ${importStatus === 'success' ? 'bg-success text-white' : importStatus === 'error' ? 'bg-red-500 text-white' : 'bg-primary text-background'}`}
                                 >
                                     {importStatus === 'success' ? 'Done' : importStatus === 'error' ? 'Err' : 'Import'}
                                 </button>
@@ -98,7 +98,7 @@ export function SettingsModal({ onClose }: SettingsModalProps) {
                     </div>
 
                     <div className="pt-4">
-                        <button onClick={handleSave} className="w-full py-3 bg-white text-black font-bold rounded-lg hover:bg-white/90 transition-colors flex items-center justify-center gap-2">
+                        <button onClick={handleSave} className="w-full py-3 bg-primary text-background font-bold rounded-lg hover:bg-primary/90 transition-colors flex items-center justify-center gap-2 shadow-lg">
                             <Save size={18} />
                             Save Changes
                         </button>
